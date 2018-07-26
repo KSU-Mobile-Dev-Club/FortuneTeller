@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">FortuneTeller</string>
+    <string name="title">Fortune Teller</string>
+    <string name="description">Using a combination of Big Data, AR, VR, AI, and if-statements, Fortune Teller predicts your future with 99.99% accuracy.</string>
+    <string name="accept_quiz">I want to be on the cutting edge of my future</string>
+    <string name="reject_quiz">I\'m kind of busy...</string>
+    <string name="quiz_directions">Please answer a few questions to help our fortune teller better predict your future.</string>
+    <string name="question1_name">Name</string>
+    <string name="question2_email">Email address</string>
+    <string name="question3_">Question #3</string>
+    <string name="question4_meeting_attendance">How many MDC meeting are you planning on attending this Fall?</string>
+    <string name="end_quiz">Tell My Fortune!</string>
 </resources>
