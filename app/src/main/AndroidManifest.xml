@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DataEntryActivity"></activity>
+        <activity android:name=".DataEntryActivity" />
+        <activity android:name=".FortuneActivity"></activity>
     </application>
 
 </manifest>

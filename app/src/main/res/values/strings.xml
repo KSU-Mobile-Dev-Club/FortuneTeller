@@ -10,4 +10,5 @@
     <string name="question3_">Question #3</string>
     <string name="question4_meeting_attendance">How many MDC meeting are you planning on attending this Fall?</string>
     <string name="end_quiz">Tell My Fortune!</string>
+    <string name="meeting_count_label">Number of planned MDC meetings: </string>
 </resources>

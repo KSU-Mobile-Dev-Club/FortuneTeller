@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@id/question2"/>
 
     <TextView
-        android:id="@+id/meetingCountLabel"
+        android:id="@+id/selectMeetingCountPrompt"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -88,7 +88,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/meetingCountLabel" />
+        app:layout_constraintTop_toBottomOf="@id/selectMeetingCountPrompt" />
 
     <Button
         android:id="@+id/submitDataButton"
