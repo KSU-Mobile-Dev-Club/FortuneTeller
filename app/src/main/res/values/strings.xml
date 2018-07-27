@@ -11,4 +11,17 @@
     <string name="question4_meeting_attendance">How many MDC meeting are you planning on attending this Fall?</string>
     <string name="end_quiz">Tell My Fortune!</string>
     <string name="meeting_count_label">Number of planned MDC meetings: </string>
+    <string-array name="fortunes">
+        <item>Fortune 0</item>
+        <item>Fortune 1</item>
+        <item>Fortune 2</item>
+        <item>Fortune 3</item>
+        <item>Fortune 4</item>
+        <item>Fortune 5</item>
+        <item>Fortune 6</item>
+        <item>Fortune 7</item>
+        <item>Fortune 8</item>
+        <item>Fortune 9</item>
+        <item>Fortune 10</item>
+    </string-array>
 </resources>

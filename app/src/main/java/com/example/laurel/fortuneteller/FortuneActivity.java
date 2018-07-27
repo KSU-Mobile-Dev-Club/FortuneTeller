@@ -17,12 +17,19 @@ public class FortuneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fortune);
 
         setMeetingCountLabel();
+        setFortune();
     }
 
     private void setMeetingCountLabel() {
         meetingCount = getIntent().getIntExtra(MEETING_COUNT, 0);
         TextView label = findViewById(R.id.meetingCountLabel);
         label.setText(getResources().getString(R.string.meeting_count_label) + meetingCount);
+    }
+
+    private void setFortune()
+    {
+        TextView fortune = findViewById(R.id.fortune);
+        fortune.setText(getResources().getStringArray(R.array.fortunes)[meetingCount]);
     }
 
     public static Intent makeIntent(Context context, int meetingCount)
