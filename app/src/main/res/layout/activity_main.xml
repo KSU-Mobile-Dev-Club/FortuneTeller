@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/crystal_ball_background"
     tools:context=".MainActivity">
 
 
     <TextView
         android:id="@+id/titleLabel"
+        style="@style/titleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -40,9 +42,9 @@
 
     <Button
         android:id="@+id/yesButton"
-        style="@style/CustomButton"
-        android:layout_height="wrap_content"
+        style="@style/buttonStyle"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:width="280dp"
         android:text="@string/accept_quiz"
@@ -53,7 +55,7 @@
 
     <Button
         android:id="@+id/noButton"
-        style="@style/CustomButton"
+        style="@style/buttonStyle"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginTop="15dp"
