@@ -27,7 +27,7 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         meetingCountPicker.setMaxValue(10);
     }
 
-    private HashMap<String, String> get_answers() {
+    private HashMap<String, String> getAnswers() {
         HashMap<String, String> data = new HashMap<>();
 
         data.put("name", ((EditText) findViewById(R.id.question1)).getText().toString());
@@ -39,12 +39,9 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        // fetch answers
-        HashMap<String, String> data = get_answers();
-
         // launch FortuneActivity
         Intent intent = FortuneActivity
-                .makeIntent(this, meetingCountPicker.getValue());
+                .makeIntent(this, meetingCountPicker.getValue(), getAnswers());
         startActivity(intent);
     }
 
