@@ -19,6 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(this, SplashScreenActivity.class));
+        startActivity(new Intent(this, DataEntryActivity.class));
     }
 }

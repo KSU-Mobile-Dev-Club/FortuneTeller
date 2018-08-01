@@ -39,10 +39,9 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        // launch FortuneActivity
-        Intent intent = FortuneActivity
-                .makeIntent(this, meetingCountPicker.getValue(), getAnswers());
-        startActivity(intent);
+        //launch crystal ball animation as transition to FortuneActivity
+        startActivity(SplashScreenActivity
+                .makeIntent(this, meetingCountPicker.getValue(), getAnswers()));
     }
 
 }
