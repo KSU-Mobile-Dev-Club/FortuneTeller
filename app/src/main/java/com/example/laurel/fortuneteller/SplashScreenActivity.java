@@ -10,7 +10,7 @@ import android.os.Bundle;
 import java.util.HashMap;
 
 public class SplashScreenActivity extends AppCompatActivity {
-    private static final int SPLASH_TIME_OUT  = 3000;
+    private static final int SPLASH_TIME_OUT  = 2000;
     private static final String MEETING_COUNT = "MeetingCount";
     private static final String ANSWERS = "Answers";
 
