@@ -26,8 +26,8 @@ public class FortuneActivity extends AppCompatActivity {
 
     private void setMeetingCountLabel() {
         meetingCount = getIntent().getIntExtra(MEETING_COUNT, 0);
-        TextView label = findViewById(R.id.meetingCountLabel);
-        label.setText(getResources().getString(R.string.meeting_count_label) + meetingCount);
+        //TextView label = findViewById(R.id.meetingCountLabel);
+        //label.setText(getResources().getString(R.string.meeting_count_label) + meetingCount);
     }
 
     private void setFortune()
