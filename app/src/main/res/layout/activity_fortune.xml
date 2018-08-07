@@ -8,9 +8,8 @@
 
     <ImageView
         android:id="@+id/crystalBall"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:src="@drawable/crystal_ball_for_fortune"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
