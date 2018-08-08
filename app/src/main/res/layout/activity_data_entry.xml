@@ -98,7 +98,6 @@
         android:layout_marginTop="20dp"
         android:text="@string/end_quiz"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/meetingCountPicker" />
 

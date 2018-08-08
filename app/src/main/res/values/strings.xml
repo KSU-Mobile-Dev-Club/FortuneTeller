@@ -10,7 +10,9 @@
     <string name="question3_">Question #3</string>
     <string name="question4_meeting_attendance">How many MDC meeting are you planning on attending this Fall?</string>
     <string name="end_quiz">Tell My Fortune!</string>
-    <string name="meeting_count_label">Number of planned MDC meetings: </string>
+    <string name="low_meeting_count_label">Hmm...not the best fortune I\'ve ever seen...  You can always add more meetings and peer into the crystal ball again! </string>
+    <string name="medium_meeting_count_label">Your future is bright!  But there is still more that MDC can do for you...</string>
+    <string name="high_meeting_count_label">Your future is beautiful and fulfilling.  My work is done.</string>
     <string-array name="fortunes">
         <item>Willie the Wildcat is personally disappointed in you.</item>
         <item>You forget how to do the Wabash.</item>
