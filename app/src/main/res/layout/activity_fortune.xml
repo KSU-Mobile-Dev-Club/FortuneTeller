@@ -10,7 +10,7 @@
         android:id="@+id/crystalBall"
         android:layout_width="320dp"
         android:layout_height="320dp"
-        android:src="@drawable/crystal_ball_for_fortune"
+        android:background="@drawable/crystal_ball_animation"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

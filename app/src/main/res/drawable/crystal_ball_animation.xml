@@ -1,0 +1,11 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/crystal_ball_for_fortune_1" android:duration="1"/>
+    <item android:drawable="@drawable/crystal_ball_for_fortune_2" android:duration="200"/>
+    <item android:drawable="@drawable/crystal_ball_for_fortune_3" android:duration="200"/>
+    <item android:drawable="@drawable/crystal_ball_for_fortune_4" android:duration="200"/>
+    <item android:drawable="@drawable/crystal_ball_for_fortune_2" android:duration="200"/>
+    <item android:drawable="@drawable/crystal_ball_for_fortune_3" android:duration="200"/>
+    <item android:drawable="@drawable/crystal_ball_for_fortune_4" android:duration="200"/>
+    <item android:drawable="@drawable/crystal_ball_for_fortune_1" android:duration="1"/>
+</animation-list>
