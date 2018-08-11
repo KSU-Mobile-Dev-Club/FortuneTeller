@@ -18,17 +18,15 @@
     <string-array name="bad_fortunes">
         <item>Willie the Wildcat is personally disappointed in you.</item>
         <item>You forget how to do the Wabash.</item>
-        <item>You wear an itchy sweater every day for the rest of your life, to be worn with no undershirt at all times.</item>
         <item>Every time you wear ear buds they are violently yanked out of your ears.</item>
     </string-array>
     <string-array name="okay_fortunes">
-        <item>You become a junior sales associate at a midrange paper supply firm.  That'll show em.</item>
-        <item>Okay fortune 2</item>
-        <item>Okay fortune 3</item>
-        <item>Okay fortune 4</item>
+        <item>You become a junior sales associate at a midrange paper supply firm. </item>
+        <item>You become a farming master in FarmVille.</item>
+        <item>The Computer Science department makes you Hall Monitor.</item>
+        <item>Your crush gives you a soft "maybe"</item>
     </string-array>
     <string-array name="good_fortunes">
-        <item>Good fortune 1</item>
         <item>You marry your soul mate that you met at MDC.</item>
         <item>Bill Snyder asks you for your autograph.</item>
         <item>You achieve the highest honor possible as successor to the MDC president.</item>
