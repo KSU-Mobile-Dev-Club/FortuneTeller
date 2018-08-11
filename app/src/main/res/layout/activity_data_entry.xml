@@ -71,35 +71,33 @@
         android:id="@+id/selectMeetingCountPrompt"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="@string/question4_meeting_attendance"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/question3"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"/>
-
-    <NumberPicker
-        android:id="@+id/meetingCountPicker"
-        android:layout_width="38dp"
-        android:layout_height="112dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:text="@string/question4_meeting_attendance"
+        android:textAlignment="center"
+        android:layout_marginBottom="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/selectMeetingCountPrompt" />
+        app:layout_constraintBottom_toTopOf="@id/meetingCountPicker" />
+
+    <Spinner
+        android:id="@+id/meetingCountPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/submitDataButton" />
 
     <Button
         android:id="@+id/submitDataButton"
+        style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/buttonStyle"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/end_quiz"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/meetingCountPicker" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

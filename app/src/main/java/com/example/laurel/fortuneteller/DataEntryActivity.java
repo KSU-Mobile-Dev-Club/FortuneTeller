@@ -4,14 +4,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 
 import java.util.HashMap;
 
 public class DataEntryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private NumberPicker meetingCountPicker;
+    private Spinner meetingCountPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +25,18 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
 
     private void InitializeMeetingCountPicker() {
         meetingCountPicker = findViewById(R.id.meetingCountPicker);
-        meetingCountPicker.setMinValue(0);
-        meetingCountPicker.setMaxValue(10);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.meetingCountOptions,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        meetingCountPicker.setAdapter(adapter);
     }
 
     private HashMap<String, String> getAnswers() {
         HashMap<String, String> data = new HashMap<>();
-
         data.put("name", ((EditText) findViewById(R.id.question1)).getText().toString());
         data.put("email", ((EditText) findViewById(R.id.question2)).getText().toString());
-        data.put("meeting_count", Integer.toString(meetingCountPicker.getValue()));
-
         return data;
     }
 
@@ -41,7 +44,7 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         //launch crystal ball animation as transition to FortuneActivity
         startActivity(SplashScreenActivity
-                .makeIntent(this, meetingCountPicker.getValue(), getAnswers()));
+                .makeIntent(this, meetingCountPicker.getSelectedItemPosition(), getAnswers()));
     }
 
 }

@@ -15,17 +15,27 @@
     <string name="high_meeting_count_label">Your future is beautiful and fulfilling.  My work is done.</string>
     <string name="add_another_meeting">Add another MDC meeting!</string>
     <string name="email_button">Sign me up!</string>
-    <string-array name="fortunes">
+    <string-array name="bad_fortunes">
         <item>Willie the Wildcat is personally disappointed in you.</item>
         <item>You forget how to do the Wabash.</item>
         <item>You wear an itchy sweater every day for the rest of your life, to be worn with no undershirt at all times.</item>
         <item>Every time you wear ear buds they are violently yanked out of your ears.</item>
-        <item>Fortune 4</item>
-        <item>Fortune 5</item>
-        <item>Fortune 6</item>
-        <item>Fortune 7</item>
+    </string-array>
+    <string-array name="okay_fortunes">
+        <item>You become a junior sales associate at a midrange paper supply firm.  That'll show em.</item>
+        <item>Okay fortune 2</item>
+        <item>Okay fortune 3</item>
+        <item>Okay fortune 4</item>
+    </string-array>
+    <string-array name="good_fortunes">
+        <item>Good fortune 1</item>
         <item>You marry your soul mate that you met at MDC.</item>
         <item>Bill Snyder asks you for your autograph.</item>
         <item>You achieve the highest honor possible as successor to the MDC president.</item>
+    </string-array>
+    <string-array name="meetingCountOptions">
+        <item>What\'s MDC???</item>
+        <item>Hmm...I might try a few meetings...</item>
+        <item>You guys are basically my family already!</item>
     </string-array>
 </resources>

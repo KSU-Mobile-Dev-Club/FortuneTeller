@@ -11,12 +11,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class FortuneActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String MEETING_COUNT = "MeetingCount";
     private static final String ANSWERS = "Answers";
+    private static final int HIGH_FORTUNE_QUALITY = 2;
+    private static final int MEDIUM_FORTUNE_QUALITY = 1;
+    private static final int LOW_FORTUNE_QUALITY = 0;
     private static final int ANIMATION_TIME_OUT = 1200;
-    private int meetingCount;
+    private int fortuneQuality;
     private HashMap<String, String> answers;
     private Button AddMeetingButton;
     private TextView meetingCountTextView;
@@ -28,14 +33,13 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fortune);
         answers = (HashMap<String, String>) getIntent().getSerializableExtra(ANSWERS);
-        meetingCount = getIntent().getIntExtra(MEETING_COUNT, 0);
+        fortuneQuality = getIntent().getIntExtra(MEETING_COUNT, 0);
         AddMeetingButton = findViewById(R.id.addMeetingButton);
         meetingCountTextView = findViewById(R.id.meetingCountLabel);
         fortuneTextView = findViewById(R.id.fortune);
         animation = (AnimationDrawable) findViewById(R.id.crystalBall)
                         .getBackground();
-        setMeetingCountLabel();
-        setFortune();
+        setFortuneAndLabel();
         AddMeetingButton.setOnClickListener(this);
     }
 
@@ -49,8 +53,7 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        meetingCount++;
-        checkDisableMeetingButton();
+        fortuneQuality++;
         clearTextViews();
         animation.start();
         new Handler().postDelayed(new Runnable(){
@@ -58,40 +61,42 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
             public void run() {
                 animation.stop();
                 animation.selectDrawable(0); //reset animation to first frame (no stars)
-                setFortune();
-                setMeetingCountLabel();
+                setFortuneAndLabel();
             }
         },ANIMATION_TIME_OUT);
     }
 
+    private void setFortuneAndLabel() {
+        String label;
+        String[] fortunes;
+
+        if (fortuneQuality == LOW_FORTUNE_QUALITY)
+        {
+            fortunes = getResources().getStringArray(R.array.bad_fortunes);
+            label = getResources().getString(R.string.low_meeting_count_label);
+        }
+        else if (fortuneQuality == MEDIUM_FORTUNE_QUALITY)
+        {
+            fortunes = getResources().getStringArray(R.array.okay_fortunes);
+            label = getResources().getString(R.string.medium_meeting_count_label);
+        }
+        else
+        {
+            fortunes = getResources().getStringArray(R.array.good_fortunes);
+            label = getResources().getString(R.string.high_meeting_count_label);
+        }
+        meetingCountTextView.setText(label);
+        fortuneTextView.setText(fortunes[new Random().nextInt(fortunes.length)]);
+        checkDisableMeetingButton();
+    }
+
     private void checkDisableMeetingButton()
     {
-        if (meetingCount == 10)
+        if (fortuneQuality == HIGH_FORTUNE_QUALITY)
         {
             AddMeetingButton.setEnabled(false);
             AddMeetingButton.setAlpha(.5f); //gray out the button when disabled
         }
-    }
-
-    private void setMeetingCountLabel() {
-        if (meetingCount < 7)
-        {
-            meetingCountTextView.setText(getResources().getString(R.string.low_meeting_count_label));
-        }
-        else if (meetingCount < 10)
-        {
-            meetingCountTextView.setText(getResources().getString(R.string.medium_meeting_count_label));
-        }
-        else
-        {
-            meetingCountTextView.setText(getResources().getString(R.string.high_meeting_count_label));
-        }
-    }
-
-    private void setFortune()
-    {
-        fortuneTextView.setText(getResources()
-                .getStringArray(R.array.fortunes)[meetingCount]);
     }
 
     private void clearTextViews()
