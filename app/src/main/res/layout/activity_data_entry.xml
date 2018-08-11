@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataEntryActivity">
+    tools:context=".DataEntryActivity"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
 
     <TextView
         android:id="@+id/dataEntryLabel"
@@ -23,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/question1"
+        android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -38,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@id/dataEntryLabel" />
 
     <EditText
-        android:id="@+id/question2"
+        android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -50,7 +53,7 @@
         android:hint="@string/question2_email"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/question1" />
+        app:layout_constraintTop_toBottomOf="@id/nameEditText" />
 
 
     <TextView

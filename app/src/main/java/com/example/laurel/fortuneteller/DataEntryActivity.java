@@ -1,9 +1,11 @@
 package com.example.laurel.fortuneteller;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -21,6 +23,35 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_data_entry);
         InitializeMeetingCountPicker();
         findViewById(R.id.submitDataButton).setOnClickListener(this);
+        SetEditTextListeners();
+    }
+
+    @Override
+    public void onClick(View v) {
+        //launch crystal ball animation as transition to FortuneActivity
+        startActivity(SplashScreenActivity
+                .makeIntent(this, meetingCountPicker.getSelectedItemPosition(), getAnswers()));
+    }
+
+    private void SetEditTextListeners()
+    {
+        findViewById(R.id.nameEditText).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        findViewById(R.id.emailEditText).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
     }
 
     private void InitializeMeetingCountPicker() {
@@ -35,16 +66,13 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
 
     private HashMap<String, String> getAnswers() {
         HashMap<String, String> data = new HashMap<>();
-        data.put("name", ((EditText) findViewById(R.id.question1)).getText().toString());
-        data.put("email", ((EditText) findViewById(R.id.question2)).getText().toString());
+        data.put("name", ((EditText) findViewById(R.id.nameEditText)).getText().toString());
+        data.put("email", ((EditText) findViewById(R.id.emailEditText)).getText().toString());
         return data;
     }
 
-    @Override
-    public void onClick(View v) {
-        //launch crystal ball animation as transition to FortuneActivity
-        startActivity(SplashScreenActivity
-                .makeIntent(this, meetingCountPicker.getSelectedItemPosition(), getAnswers()));
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-
 }
