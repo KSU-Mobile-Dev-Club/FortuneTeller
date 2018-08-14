@@ -59,8 +59,8 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.meetingCountOptions,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         meetingCountPicker.setAdapter(adapter);
     }
 

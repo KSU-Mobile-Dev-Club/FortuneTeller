@@ -11,69 +11,77 @@
 
     <TextView
         android:id="@+id/dataEntryLabel"
-        android:layout_width="300dp"
+        style="@style/textStyle"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/quiz_directions"
-        android:textSize="20sp"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/question1_name"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dataEntryLabel" />
-
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/question2_email"
-        android:inputType="textEmailAddress"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameEditText" />
-
-
-    <TextView
-        android:id="@+id/selectMeetingCountPrompt"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:text="@string/question4_meeting_attendance"
-        android:textAlignment="center"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/meetingCountPicker" />
-
-    <Spinner
-        android:id="@+id/meetingCountPicker"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/background_border"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/submitDataButton" />
+        app:layout_constraintTop_toBottomOf="@id/dataEntryLabel">
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/question1_name"
+            android:inputType="textPersonName"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/question2_email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/selectMeetingCountPrompt"
+            style="@style/textStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/question4_meeting_attendance"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/meetingCountPicker"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="28dp" />
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/submitDataButton"
         style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/end_quiz"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

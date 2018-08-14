@@ -18,4 +18,8 @@
         <item name="android:fontFamily"></item>
     </style>
 
+    <style name="textStyle" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>
