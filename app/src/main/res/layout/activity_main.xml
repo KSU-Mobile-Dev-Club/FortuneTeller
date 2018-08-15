@@ -8,62 +8,43 @@
 
 
     <TextView
-        android:id="@+id/titleLabel"
-        style="@style/titleStyle"
-        android:layout_width="wrap_content"
+        android:id="@+id/intro_text"
+        style="@style/textStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/title"
-        android:textSize="40sp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.8"
+        android:background="#FFFFFF"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="40dp"
+        android:text="@string/description"
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/introLabel"
-        style="@style/textStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:background="#FFFFFF"
-        android:text="@string/description"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:alpha="0.8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleLabel" />
-
-    <Button
-        android:id="@+id/yesButton"
-        style="@style/buttonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:width="280dp"
-        android:text="@string/accept_quiz"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/introLabel" />
-
-    <Button
-        android:id="@+id/noButton"
-        style="@style/buttonStyle"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/crystal_ball"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/crystal_ball_animation"
         android:layout_marginTop="30dp"
-        android:text="@string/reject_quiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/yesButton" />
+        app:layout_constraintTop_toBottomOf="@+id/intro_text" />
 
+    <Button
+        android:id="@+id/yes_button"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="280dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/tell_fortune_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crystal_ball" />
 
 </android.support.constraint.ConstraintLayout>
