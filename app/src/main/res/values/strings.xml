@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FortuneTeller</string>
+    <string name="app_name">Fortune Teller</string>
     <string name="title">Fortune Teller</string>
     <string name="description">Using a combination of Big Data, AR, VR, AI, and if-statements, Fortune Teller predicts your future with 99.99% accuracy.</string>
     <string name="accept_quiz">I want to be on the cutting edge of my future</string>
