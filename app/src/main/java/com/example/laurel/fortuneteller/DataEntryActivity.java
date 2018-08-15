@@ -1,14 +1,12 @@
 package com.example.laurel.fortuneteller;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 
 import java.util.HashMap;
@@ -21,10 +19,14 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_entry);
+
+        //Set up button on Action Bar to go back to the MainActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        InitializeMeetingCountPicker();
+
+        initializeMeetingCountPicker();
+        setHideSoftKeyBoardListeners();
+
         findViewById(R.id.submitDataButton).setOnClickListener(this);
-        SetEditTextListeners();
     }
 
     @Override
@@ -34,13 +36,14 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
                 .makeIntent(this, meetingCountPicker.getSelectedItemPosition(), getAnswers()));
     }
 
-    private void SetEditTextListeners()
+    //Hide the soft keyboard when the user clicks out of the EditTexts
+    private void setHideSoftKeyBoardListeners()
     {
         findViewById(R.id.nameEditText).setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    hideKeyboard(v);
+                    hideSoftKeyboard(v);
                 }
             }
         });
@@ -49,13 +52,18 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    hideKeyboard(v);
+                    hideSoftKeyboard(v);
                 }
             }
         });
     }
 
-    private void InitializeMeetingCountPicker() {
+    private void hideSoftKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void initializeMeetingCountPicker() {
         meetingCountPicker = findViewById(R.id.meetingCountPicker);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
@@ -70,10 +78,5 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         data.put("name", ((EditText) findViewById(R.id.nameEditText)).getText().toString());
         data.put("email", ((EditText) findViewById(R.id.emailEditText)).getText().toString());
         return data;
-    }
-
-    private void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

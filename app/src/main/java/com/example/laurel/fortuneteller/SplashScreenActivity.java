@@ -26,13 +26,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
+                //Need to pass on data entered by the user in the DataEntryActivity
+                //to the FortuneActivity
                 int meetingCount = getIntent().getIntExtra(MEETING_COUNT,0);
                 HashMap<String,String> answers = (HashMap<String,String>) getIntent().getSerializableExtra(ANSWERS);
                 Intent intent = FortuneActivity.makeIntent(SplashScreenActivity.this, meetingCount, answers);
                 startActivity(intent);
                 finish();
             }
-        },SPLASH_TIME_OUT);
+        }, SPLASH_TIME_OUT);
     }
 
     public static Intent makeIntent(Context context, int meetingCount, HashMap<String, String> answers)

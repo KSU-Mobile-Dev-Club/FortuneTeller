@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class FortuneActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String MEETING_COUNT = "MeetingCount";
@@ -23,7 +22,7 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
     private static final int ANIMATION_TIME_OUT = 1200;
     private int fortuneQuality;
     private HashMap<String, String> answers;
-    private Button AddMeetingButton;
+    private Button addMeetingButton;
     private TextView meetingCountTextView;
     private TextView fortuneTextView;
     private AnimationDrawable animation;
@@ -32,16 +31,21 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fortune);
+
+        //adding up button to action bar to go back to DataEntryActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        answers = (HashMap<String, String>) getIntent().getSerializableExtra(ANSWERS);
-        fortuneQuality = getIntent().getIntExtra(MEETING_COUNT, 0);
-        AddMeetingButton = findViewById(R.id.addMeetingButton);
-        meetingCountTextView = findViewById(R.id.meetingCountLabel);
-        fortuneTextView = findViewById(R.id.fortune);
-        animation = (AnimationDrawable) findViewById(R.id.crystalBall)
-                        .getBackground();
-        setFortuneAndLabel();
-        AddMeetingButton.setOnClickListener(this);
+
+        //retrieving the answers the user entered in DataEntryActivity
+        getAnswersFromIntent();
+
+        //getting a reference to the view objects
+        initializeWidgets();
+
+        //set the crystal ball fortune and prompt based on the user's
+        //"thoughts about MDC"
+        setFortuneAndPrompt();
+
+        addMeetingButton.setOnClickListener(this);
     }
 
     public static Intent makeIntent(Context context, int meetingCount, HashMap<String, String> answers)
@@ -56,37 +60,58 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         fortuneQuality++;
         clearTextViews();
+
+        //starting the "crystal ball sparkle" animation
         animation.start();
+
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
+                //stopping the animation here allows it to run each time the
+                //button is clicked, instead of just once
                 animation.stop();
-                animation.selectDrawable(0); //reset animation to first frame (no stars)
-                setFortuneAndLabel();
+
+                //reset animation to first frame (no stars)
+                animation.selectDrawable(0);
+
+                setFortuneAndPrompt();
             }
-        },ANIMATION_TIME_OUT);
+        }, ANIMATION_TIME_OUT);
     }
 
-    private void setFortuneAndLabel() {
-        String label;
+    private void getAnswersFromIntent() {
+        answers = (HashMap<String, String>) getIntent().getSerializableExtra(ANSWERS);
+        fortuneQuality = getIntent().getIntExtra(MEETING_COUNT, 0);
+    }
+
+    private void initializeWidgets() {
+        addMeetingButton = findViewById(R.id.addMeetingButton);
+        meetingCountTextView = findViewById(R.id.meetingCountLabel);
+        fortuneTextView = findViewById(R.id.fortune);
+        animation = (AnimationDrawable) findViewById(R.id.crystalBall)
+                        .getBackground();
+    }
+
+    private void setFortuneAndPrompt() {
+        String prompt;
         String[] fortunes;
 
         if (fortuneQuality == LOW_FORTUNE_QUALITY)
         {
             fortunes = getResources().getStringArray(R.array.bad_fortunes);
-            label = getResources().getString(R.string.low_meeting_count_label);
+            prompt = getResources().getString(R.string.low_meeting_count_label);
         }
         else if (fortuneQuality == MEDIUM_FORTUNE_QUALITY)
         {
             fortunes = getResources().getStringArray(R.array.okay_fortunes);
-            label = getResources().getString(R.string.medium_meeting_count_label);
+            prompt = getResources().getString(R.string.medium_meeting_count_label);
         }
         else
         {
             fortunes = getResources().getStringArray(R.array.good_fortunes);
-            label = getResources().getString(R.string.high_meeting_count_label);
+            prompt = getResources().getString(R.string.high_meeting_count_label);
         }
-        meetingCountTextView.setText(label);
+        meetingCountTextView.setText(prompt);
         fortuneTextView.setText(fortunes[new Random().nextInt(fortunes.length)]);
         checkDisableMeetingButton();
     }
@@ -95,8 +120,10 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
     {
         if (fortuneQuality == HIGH_FORTUNE_QUALITY)
         {
-            AddMeetingButton.setEnabled(false);
-            AddMeetingButton.setAlpha(.5f); //gray out the button when disabled
+            addMeetingButton.setEnabled(false);
+
+            //gray out the button when disabled
+            addMeetingButton.setAlpha(.5f);
         }
     }
 
