@@ -24,7 +24,7 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initializeMeetingCountPicker();
-        setHideSoftKeyBoardListeners();
+        setEditTextFocusChangeListeners();
 
         findViewById(R.id.submitDataButton).setOnClickListener(this);
     }
@@ -37,7 +37,7 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
     }
 
     //Hide the soft keyboard when the user clicks out of the EditTexts
-    private void setHideSoftKeyBoardListeners()
+    private void setEditTextFocusChangeListeners()
     {
         findViewById(R.id.nameEditText).setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override

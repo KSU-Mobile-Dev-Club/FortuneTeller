@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -23,6 +24,7 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
     private int fortuneQuality;
     private HashMap<String, String> answers;
     private Button addMeetingButton;
+    private Button emailButton;
     private TextView meetingCountTextView;
     private TextView fortuneTextView;
     private AnimationDrawable animation;
@@ -46,6 +48,7 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
         setFortuneAndPrompt();
 
         addMeetingButton.setOnClickListener(this);
+        emailButton.setOnClickListener(this);
     }
 
     public static Intent makeIntent(Context context, int meetingCount, HashMap<String, String> answers)
@@ -58,6 +61,17 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.addMeetingButton)
+        {
+            updateFortune();
+        }
+        else if (v.getId() == R.id.emailButton)
+        {
+            saveEmail();
+        }
+    }
+
+    private void updateFortune() {
         fortuneQuality++;
         clearTextViews();
 
@@ -79,6 +93,21 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
         }, ANIMATION_TIME_OUT);
     }
 
+    private void saveEmail()
+    {
+        boolean success = CSVWriter.tryWriteLine(answers.get("name"), answers.get("email"));
+        Toast toast;
+        if (success)
+        {
+            toast = Toast.makeText(this, "Email saved!", Toast.LENGTH_SHORT);
+        }
+        else
+        {
+            toast = Toast.makeText(this, "Oops! Something went wrong.", Toast.LENGTH_SHORT);
+        }
+        toast.show();
+    }
+
     private void getAnswersFromIntent() {
         answers = (HashMap<String, String>) getIntent().getSerializableExtra(ANSWERS);
         fortuneQuality = getIntent().getIntExtra(MEETING_COUNT, 0);
@@ -86,6 +115,7 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
 
     private void initializeWidgets() {
         addMeetingButton = findViewById(R.id.addMeetingButton);
+        emailButton = findViewById(R.id.emailButton);
         meetingCountTextView = findViewById(R.id.meetingCountLabel);
         fortuneTextView = findViewById(R.id.fortune);
         animation = (AnimationDrawable) findViewById(R.id.crystalBall)
