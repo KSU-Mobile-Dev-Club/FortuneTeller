@@ -32,6 +32,7 @@ public class FortuneActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fortune);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         answers = (HashMap<String, String>) getIntent().getSerializableExtra(ANSWERS);
         fortuneQuality = getIntent().getIntExtra(MEETING_COUNT, 0);
         AddMeetingButton = findViewById(R.id.addMeetingButton);

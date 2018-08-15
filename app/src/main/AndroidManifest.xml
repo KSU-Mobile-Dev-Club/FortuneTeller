@@ -16,8 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DataEntryActivity" />
-        <activity android:name=".FortuneActivity" />
+        <activity
+            android:name=".DataEntryActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".FortuneActivity"
+            android:parentActivityName=".DataEntryActivity"/>
         <activity android:name=".SplashScreenActivity"></activity>
     </application>
 

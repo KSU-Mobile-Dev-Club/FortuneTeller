@@ -21,6 +21,7 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_entry);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         InitializeMeetingCountPicker();
         findViewById(R.id.submitDataButton).setOnClickListener(this);
         SetEditTextListeners();
