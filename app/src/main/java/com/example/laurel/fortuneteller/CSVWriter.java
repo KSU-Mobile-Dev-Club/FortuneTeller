@@ -1,14 +1,13 @@
 package com.example.laurel.fortuneteller;
 
 import android.os.Environment;
-import android.widget.Toast;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class CSVWriter {
+    private static final String DIRNAME = "Emails";
     private static final String FILENAME = "emails.txt";
 
     public static boolean tryWriteLine(String email, String name)
@@ -18,9 +17,16 @@ public class CSVWriter {
         boolean success = false;
 
         try {
-            File file = new File(Environment.getExternalStorageDirectory(), FILENAME);
+            File myDir = new File(Environment.getExternalStorageDirectory(), DIRNAME);
 
-            // if file doesn't exists, then create it
+            //if directory doesn't exist, create it
+            if (!myDir.exists()) {
+                myDir.mkdirs();
+            }
+
+            File file = new File(myDir, FILENAME);
+
+            // if file doesn't exist, then create it
             if (!file.exists()) {
                 file.createNewFile();
             }
