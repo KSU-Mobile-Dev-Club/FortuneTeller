@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class CSVWriter {
     private static final String DIRNAME = "Emails";
-    private static final String FILENAME = "emails.txt";
+    private static final String FILENAME = "emails.csvgit";
 
     public static boolean tryWriteLine(String email, String name)
     {
